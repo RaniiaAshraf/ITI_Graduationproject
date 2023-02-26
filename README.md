@@ -41,13 +41,14 @@ RUN mv ./kubectl /usr/local/bin
   </div>
 
 ## On Private machine
-1- connect to public machine using key 
-2- install docker 
+1) connect to public machine using key 
+2) install docker 
 
 ## On public machine 
 1- Install kubectl and aws cli packages
 2- Configure aws 
-3- copy .yml files 
+3-  Connect on aws cluster
+4- copy .yml files 
 
 ## On jenkins create pipeline 
 ```
