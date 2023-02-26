@@ -1,0 +1,12 @@
+jenkins:
+http://a1fbc05d4f9fb404b928b927103b8628-1833249272.us-east-1.elb.amazonaws.com/
+
+
+
+application: 
+http://a910ef923b8a24dab88f1da0773add74-1735174436.us-east-1.elb.amazonaws.com:8000/
+
+
+
+link application on github:
+https://github.com/RaniiaAshraf/Application.git
