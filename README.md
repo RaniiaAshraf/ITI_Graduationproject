@@ -39,3 +39,55 @@ RUN mv ./kubectl /usr/local/bin
    <div>
   <img src="https://github.com/RaniiaAshraf/ITI_Graduationproject/blob/main/screenshots/image.png" > 
   </div>
+
+## On Private machine
+1- connect to public machine using key 
+2- install docker 
+
+## On public machine 
+1- Install kubectl and aws cli packages
+2- Configure aws 
+3- copy .yml files 
+
+## On jenkins create pipeline 
+```
+pipeline {
+    agent any
+
+    stages {
+        stage('CI') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                git 'https://github.com/RaniiaAshraf/Application'
+                sh """
+                cd ./application
+                docker login -u ${USERNAME} -p ${PASSWORD}
+                docker build . -f Dockerfile -t raniiaashraff/pythonapplication  --network host
+                docker push raniiaashraff/pythonapplication
+                """
+                }
+            }
+        }
+         stage('CD') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                git 'https://github.com/RaniiaAshraf/Application'
+                sh """
+                docker login -u ${USERNAME} -p ${PASSWORD}
+                pwd
+                kubectl create namespace app
+                kubectl apply -f /var/jenkins_home/workspace/pipeline/Deployment/redis-deployment.yaml -n app
+                kubectl apply -f /var/jenkins_home/workspace/pipeline/Deployment/redis-service.yaml -n app
+                kubectl apply -f /var/jenkins_home/workspace/pipeline/Deployment/configMap.yaml -n app
+                kubectl apply -f /var/jenkins_home/workspace/pipeline/Deployment/deployment.yaml -n app
+                kubectl apply -f /var/jenkins_home/workspace/pipeline/Deployment/load-balancer-service.yaml -n app
+            
+                """
+                }
+            }
+        }
+    }
+}
+```
+
+
