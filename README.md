@@ -41,7 +41,7 @@ RUN mv ./kubectl /usr/local/bin
   </div>
 
 ## On Private machine
-1) connect to public machine using key 
+1) connected on public machine using key 
 2) install docker 
 
 ## On public machine 
@@ -92,3 +92,7 @@ pipeline {
 ```
 
 
+<div>
+  <img src="https://github.com/RaniiaAshraf/ITI_Graduationproject/blob/main/screenshots/Screenshot%20from%202023-02-26%2019-55-43.png" > 
+  <img src="https://github.com/RaniiaAshraf/ITI_Graduationproject/blob/main/screenshots/Screenshot%20from%202023-02-26%2020-21-12.png" > 
+  </div>
