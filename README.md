@@ -45,10 +45,10 @@ RUN mv ./kubectl /usr/local/bin
 2) install docker 
 
 ## On public machine 
-1- Install kubectl and aws cli packages
-2- Configure aws 
-3-  Connect on aws cluster
-4- copy .yml files 
+1) Install kubectl and aws cli packages
+2) Configure aws 
+3)  Connect on aws cluster
+4) copy .yml files 
 
 ## On jenkins create pipeline 
 ```
